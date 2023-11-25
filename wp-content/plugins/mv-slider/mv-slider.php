@@ -39,7 +39,13 @@ if( ! defined("ABSPATH") ){
 if( ! class_exists("MV_Slider") ){
     class MV_Slider{
         function __construct(){
-        
+            $this->define_constants();
+        }
+
+        public function define_constants(){
+            define( 'MV_SLIDER_PATH' , plugin_dir_path(__FILE__)); #Const com o caminho da pasta do plugin
+            define( 'MV_SLIDER_URL' , plugin_dir_url(__FILE__)); #Const com a url do plugin
+            define( 'MV_SLIDER_VERSION', '1.0.0'); #Const para definir a versão do plugin
         }
     }
 }
