@@ -47,9 +47,27 @@ if( ! class_exists("MV_Slider") ){
             define( 'MV_SLIDER_URL' , plugin_dir_url(__FILE__)); #Const com a url do plugin
             define( 'MV_SLIDER_VERSION', '1.0.0'); #Const para definir a versão do plugin
         }
+
+        public static function activate(){
+            update_option('rewrite_rules', '');
+
+        }
+
+        public static function deactivate(){
+            flush_rewrite_rules();
+        
+        }
+
+        public static function uninstall(){
+        
+        }
     }
 }
 
 if( class_exists("") ){
+    register_activation_hook(__FILE__,array('MV_Slider','activate'));
+    register_deactivation_hook(__FILE__,array('MV_Slider','deactivate'));
+    register_uninstall_hook(__FILE__,array('MV_Slider','uninstall'));
+
     $mv_slider = new MV_Slider();
 }
