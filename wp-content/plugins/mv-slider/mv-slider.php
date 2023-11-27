@@ -41,10 +41,10 @@ if( ! class_exists( 'MV_Slider' ) ){
             require_once( MV_SLIDER_PATH . 'post-types/class.mv-slider-cpt.php' );
             $MV_Slider_Post_Type = new MV_Slider_Post_Type();
 
-            require_once( MV_SLIDER_PATH . 'class.mv-slider-settings.php');
+            require_once( MV_SLIDER_PATH . 'class.mv-slider-settings.php' );
             $MV_Slider_Settings = new MV_Slider_Settings();
 
-            require_once( MV_SLIDER_PATH . 'class.mv-slider-shortcode.php');
+            require_once( MV_SLIDER_PATH . 'shortcodes/class.mv-slider-shortcode.php' );
             $MV_Slider_Shortcode = new MV_Slider_Shortcode();
         }
 
@@ -100,16 +100,17 @@ if( ! class_exists( 'MV_Slider' ) ){
         }
 
         public function mv_slider_settings_page(){
-            if( ! current_user_can('manage_options') ){
+            if( ! current_user_can( 'manage_options' ) ){
                 return;
             }
 
-            if( isset( $_GET['settings-updated']) ){
-                add_settings_error('mv_slider_options', 'mv_slider_message', 'Settings Saved', 'success') ;
+            if( isset( $_GET['settings-updated'] ) ){
+                add_settings_error( 'mv_slider_options', 'mv_slider_message', 'Settings Saved', 'success' );
             }
+            
+            settings_errors( 'mv_slider_options' );
 
-            settings_errors('mv_slider_options');
-            require(MV_SLIDER_PATH .'views/settings-page.php');
+            require( MV_SLIDER_PATH . 'views/settings-page.php' );
         }
 
     }
