@@ -10,6 +10,7 @@
  */
 
 get_header();
+echo do_shortcode("[mv_slider id='28,29,30' orderby='rand']Just a title[/mv_slider]");
 ?>
 
 	<div id="primary" class="content-area">
